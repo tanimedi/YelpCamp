@@ -16,8 +16,8 @@ const CampgroundSchema = new Schema({
   images: [ImageSchema],
   geometry: {
     type: {
-      type: String, 
-      enum: ['Point'], 
+      type: String,
+      enum: ["Point"],
       required: true
     },
     coordinates: {
@@ -38,6 +38,10 @@ const CampgroundSchema = new Schema({
       ref: "Review"
     }
   ]
+});
+
+CampgroundSchema.virtual("properties.popUpMarkup").get(function () {
+  return "I AM POPUP TEXT!!!";
 });
 
 CampgroundSchema.post("findOneAndDelete", async function (doc) {
